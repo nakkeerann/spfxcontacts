@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "globalsln-client-side-solution",
+    "id": "0dd9c5bd-6d43-434f-ad4f-c7558f5c1d51",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true
+  },
+  "paths": {
+    "zippedPackage": "solution/globalsln.sppkg"
+  }
+}
