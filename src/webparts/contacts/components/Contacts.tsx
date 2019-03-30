@@ -2,8 +2,22 @@ import * as React from 'react';
 import styles from './Contacts.module.scss';
 import { IContactsProps } from './IContactsProps';
 import { escape } from '@microsoft/sp-lodash-subset';
-
+import * as microsoftTeams from '@microsoft/teams-js';
 export default class Contacts extends React.Component<IContactsProps, {}> {
+  private _teamsContext: microsoftTeams.Context;
+  protected onInit(): Promise<any> {
+    let retVal: Promise<any> = Promise.resolve();
+    if (this.context.microsoftTeams) {
+      retVal = new Promise((resolve, reject) => {
+        this.context.microsoftTeams.getContext(context => {
+          this._teamsContext = context;
+          resolve();
+        });
+      });
+    }
+    return retVal;
+  }
+  
   public render(): React.ReactElement<IContactsProps> {
     let title: string = '';
   let subTitle: string = '';

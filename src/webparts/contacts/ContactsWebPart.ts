@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import * as microsoftTeams from '@microsoft/teams-js';
 import { Version } from '@microsoft/sp-core-library';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import {
@@ -17,19 +16,6 @@ export interface IContactsWebPartProps {
 }
 
 export default class ContactsWebPart extends BaseClientSideWebPart<IContactsWebPartProps> {
-  private _teamsContext: microsoftTeams.Context;
-  protected onInit(): Promise<any> {
-    let retVal: Promise<any> = Promise.resolve();
-    if (this.context.microsoftTeams) {
-      retVal = new Promise((resolve, reject) => {
-        this.context.microsoftTeams.getContext(context => {
-          this._teamsContext = context;
-          resolve();
-        });
-      });
-    }
-    return retVal;
-  }
   public render(): void {
     const element: React.ReactElement<IContactsProps > = React.createElement(
       Contacts,
